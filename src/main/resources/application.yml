@@ -1,0 +1,13 @@
+server:
+  port: 8098
+  context-path: /
+spring:
+  datasource:
+    url: jdbc:mysql://47.96.233.196:3306/hce_blog?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
