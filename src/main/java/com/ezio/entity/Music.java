@@ -6,105 +6,119 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by Ezio on 2017/6/27.
+ * @author Ezio
+ * @date 2017/6/27
  */
 @Entity
 @Table(name = "music")
 public class Music {
 
-	@Id
-	@GeneratedValue
-	private Integer	id;
-	/**
-	 * 音乐id
-	 */
-	private String	songId;
-	/**
-	 * 歌名
-	 */
-	private String	title;
-	/**
-	 * 歌手
-	 */
-	private String	author;
-	/**
-	 * 专辑
-	 */
-	private String	album;
-	/**
-	 * 音乐地址
-	 */
-	private String	URL;
-	/**
-	 * 封面
-	 */
-	private String	cover;
-	/**
-	 * 评论数
-	 */
-	private int		commentCount;
+    @Id
+    @GeneratedValue
+    private Integer id;
+    /**
+     * 音乐id
+     */
+    private String songId;
+    /**
+     * 歌名
+     */
+    private String title;
+    /**
+     * 歌手
+     */
+    private String author;
+    /**
+     * 专辑
+     */
+    private String album;
+    /**
+     * 音乐地址
+     */
+    private String URL;
 
-	public String getSongId() {
-		return songId;
-	}
+    /**
+     * mp3地址
+     */
+    private String mp3Url;
+    /**
+     * 封面
+     */
+    private String cover;
+    /**
+     * 评论数
+     */
+    private int commentCount;
 
-	public void setSongId(String songId) {
-		this.songId = songId;
-	}
+    public String getSongId() {
+        return songId;
+    }
 
-	public int getCommentCount() {
-		return commentCount;
-	}
+    public void setSongId(String songId) {
+        this.songId = songId;
+    }
 
-	public void setCommentCount(int commentCount) {
-		this.commentCount = commentCount;
-	}
+    public int getCommentCount() {
+        return commentCount;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public String getAlbum() {
-		return album;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public void setAlbum(String album) {
-		this.album = album;
-	}
+    public String getAlbum() {
+        return album;
+    }
 
-	public String getURL() {
-		return URL;
-	}
+    public void setAlbum(String album) {
+        this.album = album;
+    }
 
-	public void setURL(String URL) {
-		this.URL = URL;
-	}
+    public String getURL() {
+        return URL;
+    }
 
-	public String getCover() {
-		return cover;
-	}
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
 
-	public void setCover(String cover) {
-		this.cover = cover;
-	}
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getMp3Url() {
+        return mp3Url;
+    }
+
+    public void setMp3Url(String mp3Url) {
+        this.mp3Url = mp3Url;
+    }
 }

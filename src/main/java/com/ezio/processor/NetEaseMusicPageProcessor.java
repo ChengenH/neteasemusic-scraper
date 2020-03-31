@@ -81,6 +81,7 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
             music.setAuthor(page.getHtml().xpath("//p[@class='des s-fc4']/span/a/text()").toString());
             music.setAlbum(page.getHtml().xpath("//p[@class='des s-fc4']/a/text()").toString());
             music.setURL(url);
+            music.setMp3Url("https://music.163.com/song/media/outer/url?id=" + songId + ".mp3");
             String substring = page.getRawText().substring(0, page.getRawText().indexOf("\" />\n" +
                     "<meta property=\"og:url\""));
             substring = substring.substring(substring.indexOf("<meta property=\"og:image\" content=\""));
