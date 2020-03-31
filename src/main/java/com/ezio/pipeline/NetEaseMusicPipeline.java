@@ -1,6 +1,6 @@
 package com.ezio.pipeline;
 
-import com.ezio.entity.Comment;
+import com.ezio.entity.MusicComment;
 import com.ezio.entity.Music;
 import com.ezio.repository.CommentRepository;
 import com.ezio.repository.MusicRepository;
@@ -37,10 +37,10 @@ public class NetEaseMusicPipeline implements Pipeline {
 					mMusicDao.save(music);
 				}
 			} else {
-				Comment comment = (Comment) entry.getValue();
+				MusicComment musicComment = (MusicComment) entry.getValue();
 				System.out.println("mCommentDao--->null" + mCommentDao == null);
-				if (mCommentDao.countByCommentId(comment.getCommentId()) == 0) {
-					mCommentDao.save(comment);
+				if (mCommentDao.countByCommentId(musicComment.getCommentId()) == 0) {
+					mCommentDao.save(musicComment);
 				}
 			}
 

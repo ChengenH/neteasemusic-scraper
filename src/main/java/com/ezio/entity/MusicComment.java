@@ -1,51 +1,102 @@
 package com.ezio.entity;
 
-import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Data
+/**
+ *
+ * @author Ezio
+ * @date 2017/6/28
+ */
+@Entity
+@Table(name = "music_comment")
 public class MusicComment {
+	
+	@Id
+	@GeneratedValue
+	private Integer	id;
+	private String	songId;
+	/**
+	 * 评论昵称
+	 */
+	private String	nickname;
+	/**
+	 * 喜欢数
+	 */
+	private Integer	likedCount;
+	/**
+	 * 评论内容
+	 */
+	private String	content;
+	/**
+	 * 评论时间
+	 */
+	private String time;
+	/**
+	 * 评论id
+	 */
+	private Long commentId;
 
-    /**
-     * user : {"locationInfo":null,"liveInfo":null,"avatarUrl":"http://p1.music.126.net/UoAvMchuKiORxZ73nm6Smw==/109951163138789613.jpg","authStatus":0,"experts":null,"vipRights":null,"userId":101638711,"userType":0,"nickname":"康忙卑鄙来此购","vipType":0,"remarkName":null,"expertTags":null}
-     * beReplied : []
-     * pendantData : null
-     * showFloorComment : null
-     * status : 0
-     * commentId : 125533189
-     * content : 这歌有毒，不要问我一个25岁的大老爷们为什么会听，你特么家住在幼儿园楼上试试[大哭]
-     * time : 1456968501681
-     * likedCount : 434425
-     * expressionUrl : null
-     * commentLocationType : 0
-     * parentCommentId : 0
-     * decoration : null
-     * repliedMark : null
-     * liked : false
-     */
 
-    private UserBean user;
-    private Long commentId;
-    private String content;
-    private long time;
-    private int likedCount;
+	public Long getCommentId() {
+		return commentId;
+	}
 
-    @Data
-    public static class UserBean {
-        /**
-         * locationInfo : null
-         * liveInfo : null
-         * avatarUrl : http://p1.music.126.net/UoAvMchuKiORxZ73nm6Smw==/109951163138789613.jpg
-         * authStatus : 0
-         * experts : null
-         * vipRights : null
-         * userId : 101638711
-         * userType : 0
-         * nickname : 康忙卑鄙来此购
-         * vipType : 0
-         * remarkName : null
-         * expertTags : null
-         */
+	public void setCommentId(Long commentId) {
+		this.commentId = commentId;
+	}
 
-        private String nickname;
-    }
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getSongId() {
+		return songId;
+	}
+
+	public void setSongId(String songId) {
+		this.songId = songId;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public Integer getLikedCount() {
+		return likedCount;
+	}
+
+	public void setLikedCount(Integer likedCount) {
+		this.likedCount = likedCount;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 }

@@ -3,9 +3,9 @@ package com.ezio.processor;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
-import com.ezio.entity.Comment;
 import com.ezio.entity.Music;
 import com.ezio.entity.MusicComment;
+import com.ezio.entity.MusicCommentDto;
 import com.ezio.pipeline.NetEaseMusicPipeline;
 import com.ezio.service.MusicService;
 import com.ezio.utils.NetEaseMusicUtils;
@@ -91,7 +91,7 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
             } catch (Exception e) {
                 cover = substring.substring(substring.indexOf("http://p2.music.126.net"));
             }
-            music.setCover(cover);
+            music.setCover(cover.replace("http", "https"));
             mMusicService.addMusic(music);
         }
     }
@@ -104,18 +104,18 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
             commentCount = -1;
         } else {
             JSONObject jsonObject = JSON.parseObject(s);
-            List<MusicComment> hotComments = JSON.parseArray(jsonObject.get("hotComments").toString(), MusicComment.class);
+            List<MusicCommentDto> hotComments = JSON.parseArray(jsonObject.get("hotComments").toString(), MusicCommentDto.class);
             commentCount = (Integer) JSONPath.eval(jsonObject, "$.total");
             hotComments.forEach(i -> {
                 // 保存到数据库
-                Comment comment = new Comment();
-                comment.setCommentId(i.getCommentId());
-                comment.setSongId(songId);
-                comment.setContent(NetEaseMusicUtils.filterEmoji(i.getContent()));
-                comment.setLikedCount(i.getLikedCount());
-                comment.setNickname(i.getUser().getNickname());
-                comment.setTime(NetEaseMusicUtils.stampToDate(i.getTime()));
-                mMusicService.addComment(comment);
+                MusicComment musicComment = new MusicComment();
+                musicComment.setCommentId(i.getCommentId());
+                musicComment.setSongId(songId);
+                musicComment.setContent(NetEaseMusicUtils.filterEmoji(i.getContent()).replace("\"", ""));
+                musicComment.setLikedCount(i.getLikedCount());
+                musicComment.setNickname(i.getUser().getNickname());
+                musicComment.setTime(NetEaseMusicUtils.stampToDate(i.getTime()));
+                mMusicService.addComment(musicComment);
             });
         }
 

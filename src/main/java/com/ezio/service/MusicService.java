@@ -1,6 +1,6 @@
 package com.ezio.service;
 
-import com.ezio.entity.Comment;
+import com.ezio.entity.MusicComment;
 import com.ezio.entity.Music;
 import com.ezio.repository.CommentRepository;
 import com.ezio.repository.MusicRepository;
@@ -28,16 +28,16 @@ public class MusicService {
 
 	}
 
-	public void addComment(Comment comment) {
+	public void addComment(MusicComment musicComment) {
 		//判断数据是否存在
-		if (mCommentRepository.countByCommentId(comment.getCommentId()) == 0) {
-			mCommentRepository.save(comment);
+		if (mCommentRepository.countByCommentId(musicComment.getCommentId()) == 0) {
+			mCommentRepository.save(musicComment);
 		}
 	}
 
 
 
-	public void addComments(List<Comment> comments) {
-		mCommentRepository.save(comments);
+	public void addComments(List<MusicComment> musicComments) {
+		mCommentRepository.save(musicComments);
 	}
 }
