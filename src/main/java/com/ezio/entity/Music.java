@@ -40,7 +40,7 @@ public class Music {
     /**
      * mp3地址
      */
-    private String mp3Url;
+    private String mp3url;
     /**
      * 封面
      */
@@ -114,11 +114,11 @@ public class Music {
         this.cover = cover;
     }
 
-    public String getMp3Url() {
-        return mp3Url;
+    public String getMp3url() {
+        return mp3url;
     }
 
-    public void setMp3Url(String mp3Url) {
-        this.mp3Url = mp3Url;
+    public void setMp3url(String mp3url) {
+        this.mp3url = mp3url;
     }
 }
