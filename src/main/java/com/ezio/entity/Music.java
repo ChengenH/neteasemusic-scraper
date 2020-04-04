@@ -41,14 +41,20 @@ public class Music {
      * mp3地址
      */
     private String mp3url;
+
     /**
      * 封面
      */
     private String cover;
+
     /**
      * 评论数
      */
     private int commentCount;
+    /**
+     * 歌词
+     */
+    private String lyric;
 
     public String getSongId() {
         return songId;
@@ -120,5 +126,13 @@ public class Music {
 
     public void setMp3url(String mp3url) {
         this.mp3url = mp3url;
+    }
+
+    public String getLyric() {
+        return lyric;
+    }
+
+    public void setLyric(String lyric) {
+        this.lyric = lyric;
     }
 }

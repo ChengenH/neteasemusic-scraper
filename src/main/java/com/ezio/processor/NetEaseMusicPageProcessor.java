@@ -8,6 +8,7 @@ import com.ezio.entity.MusicComment;
 import com.ezio.entity.MusicCommentDto;
 import com.ezio.pipeline.NetEaseMusicPipeline;
 import com.ezio.service.MusicService;
+import com.ezio.utils.HttpUtils;
 import com.ezio.utils.NetEaseMusicUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,8 +81,15 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
             music.setTitle(page.getHtml().xpath("//em[@class='f-ff2']/text()").toString());
             music.setAuthor(page.getHtml().xpath("//p[@class='des s-fc4']/span/a/text()").toString());
             music.setAlbum(page.getHtml().xpath("//p[@class='des s-fc4']/a/text()").toString());
-            music.setURL(url);
+            music.setURL(url.replace("http","https"));
             music.setMp3url("https://music.163.com/song/media/outer/url?id=" + songId + ".mp3");
+            JSONObject jsonObject = JSONObject.parseObject(HttpUtils.httpGetRequest("https://music.163.com/api/song/media?id=" + songId));
+            if(jsonObject.get("lyric")==null){
+                music.setLyric("");
+            }else {
+                music.setLyric(jsonObject.get("lyric").toString());
+            }
+
             String substring = page.getRawText().substring(0, page.getRawText().indexOf("\" />\n" +
                     "<meta property=\"og:url\""));
             substring = substring.substring(substring.indexOf("<meta property=\"og:image\" content=\""));

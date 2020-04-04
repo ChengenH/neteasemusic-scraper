@@ -17,7 +17,9 @@ public class MusicComment {
 	@Id
 	@GeneratedValue
 	private Integer	id;
+
 	private String	songId;
+
 	/**
 	 * 评论昵称
 	 */
@@ -89,8 +91,6 @@ public class MusicComment {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
-
 
 	public String getContent() {
 		return content;
