@@ -166,7 +166,7 @@ public class NetEaseMusicEntityUtil {
      */
     public static NetEaseMusicEntity getNetEaseMusicEntity(String musicId) throws Exception {
         Map formdata = new HashMap<>(2);
-        formdata.put("params", getParams("1378055568"));
+        formdata.put("params", getParams(musicId));
         formdata.put("encSecKey", rsaEncrypt(i, b, c));
         Map header = new HashMap<>(3);
         header.put("User-Agent", createRandomUSERAGENTS());
