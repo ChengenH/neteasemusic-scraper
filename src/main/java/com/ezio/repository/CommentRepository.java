@@ -1,7 +1,6 @@
 package com.ezio.repository;
 
 import com.ezio.entity.MusicComment;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -9,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface CommentRepository extends JpaRepository<MusicComment, Integer> {
-	int countByCommentId(Long commentId);
+    int countByCommentId(Long commentId);
 }

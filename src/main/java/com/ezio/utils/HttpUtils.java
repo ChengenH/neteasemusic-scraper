@@ -16,6 +16,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -29,6 +31,8 @@ import java.util.Map;
  */
 public class HttpUtils {
 
+    private static final Logger logger = LoggerFactory.getLogger(HttpUtils.class);
+
     private static PoolingHttpClientConnectionManager cm;
     private static String EMPTY_STR = "";
     private static String UTF_8 = "UTF-8";
@@ -37,10 +41,8 @@ public class HttpUtils {
     private static void init() {
         if (cm == null) {
             cm = new PoolingHttpClientConnectionManager();
-            // 每路由最大连接数，默认值是2
-            cm.setMaxTotal(50);
-            // 每路由最大连接数，默认值是2
-            cm.setDefaultMaxPerRoute(5);
+            cm.setMaxTotal(50);// 整个连接池最大连接数
+            cm.setDefaultMaxPerRoute(5);// 每路由最大连接数，默认值是2
         }
     }
 
@@ -183,7 +185,9 @@ public class HttpUtils {
                 return result;
             }
         } catch (ClientProtocolException e) {
+            logger.error("[maperror] HttpClientUtil ClientProtocolException : " + e.getMessage());
         } catch (IOException e) {
+            logger.error("[maperror] HttpClientUtil IOException : " + e.getMessage());
         } finally {
 
         }
