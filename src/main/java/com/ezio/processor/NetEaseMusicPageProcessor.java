@@ -84,18 +84,7 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
             music.setAuthor(page.getHtml().xpath("//p[@class='des s-fc4']/span/a/text()").toString());
             music.setAlbum(page.getHtml().xpath("//p[@class='des s-fc4']/a/text()").toString());
             music.setURL(url.replace("http", "https"));
-//            music.setMp3url("https://music.163.com/song/media/outer/url?id=" + songId + ".mp3");
-            try {
-                NetEaseMusicEntity netEaseMusicEntity = NetEaseMusicEntityUtil.getNetEaseMusicEntity(songId);
-                if (netEaseMusicEntity != null && netEaseMusicEntity.getData() != null && netEaseMusicEntity.getData().size() > 0) {
-                    Object mp3url = netEaseMusicEntity.getData().get(0).getUrl();
-                    if (mp3url != null) {
-                        music.setMp3url(mp3url.toString());
-                    }
-                }
-
-            } catch (Exception e) {
-            }
+            music.setMp3url("https://music.163.com/song/media/outer/url?id=" + songId + ".mp3");
             JSONObject jsonObject = JSONObject.parseObject(HttpUtils.httpGetRequest("https://music.163.com/api/song/media?id=" + songId));
             if (jsonObject.get("lyric") == null) {
                 music.setLyric("");
@@ -159,7 +148,7 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
             playlistId = "104318488";
         }
         Spider.create(processor)
-                .addUrl("http://music.163.com/playlist?id=" + playlistId)
+                .addUrl("https://music.163.com/playlist?id=" + playlistId)
                 .thread(5)
                 .run();
         long end = System.currentTimeMillis();
