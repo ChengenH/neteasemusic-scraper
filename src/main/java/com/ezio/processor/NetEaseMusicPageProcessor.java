@@ -35,15 +35,15 @@ public class NetEaseMusicPageProcessor implements PageProcessor {
     /**
      * 匹配专辑URL
      */
-    public static final String ALBUM_URL = "http://music\\.163\\.com/playlist\\?id=\\d+";
+    public static final String ALBUM_URL = "https://music\\.163\\.com/playlist\\?id=\\d+";
     /**
      * 匹配歌曲URL
      */
-    public static final String MUSIC_URL = "http://music\\.163\\.com/song\\?id=\\d+";
+    public static final String MUSIC_URL = "https://music\\.163\\.com/song\\?id=\\d+";
     /**
      * 初始地址, 帅侯飞喜欢的音乐id 148174530
      */
-    public static final String START_URL = "http://music.163.com/playlist?id=104318488";
+    public static final String START_URL = "https://music.163.com/playlist?id=104318488";
     public static final int ONE_PAGE = 200;
     private int timestamp = (int) (System.currentTimeMillis() / 1000);
     private final String authHeader = authHeader("ZF20179221632tODs6v", "038de086e3b34575a4af7be000f41f89", timestamp);
