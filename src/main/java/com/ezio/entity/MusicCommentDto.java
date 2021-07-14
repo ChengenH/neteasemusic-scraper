@@ -12,7 +12,7 @@ public class MusicCommentDto {
      * showFloorComment : null
      * status : 0
      * commentId : 125533189
-     * content : 这歌有毒，不要问我一个25岁的大老爷们为什么会听，你特么家住在幼儿园楼上试试[大哭]
+     * content : 这歌有毒，不要问我一个25岁的大老爷们为什么会听，你特么家住在幼儿园楼上试试
      * time : 1456968501681
      * likedCount : 434425
      * expressionUrl : null
