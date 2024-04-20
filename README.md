@@ -1,2 +1,2 @@
 # neteasemusic
-webmagic 爬取我喜欢的网易云歌单+评论
+webmagic Crawling NetEase Cloud Music
